@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.name }}
+  labels:
+    app: {{ .Values.name }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.class }}
+{{- with .Values.ingress.annotations }}
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  tls:
+    - hosts:
+      - {{ .Values.name }}.{{ .Values.domain }}
+      secretName: {{ .Values.name }}-tls
+  rules:
+  - host: {{ .Values.name }}.{{ .Values.domain }}
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: {{ .Values.name }}
+            servicePort: {{ .Values.service.port }}
