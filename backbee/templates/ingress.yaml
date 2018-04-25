@@ -1,3 +1,5 @@
+{{- $serviceName := .Values.name -}}
+{{- $servicePort := .Values.service.port -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -30,7 +32,16 @@ spec:
   {{- end}}
     http:
       paths:
+      {{- if .Values.paths }}
+      {{- range .Values.paths }}
+        - path: {{ . }}
+          backend:
+            serviceName: {{ $serviceName }}
+            servicePort: {{ $servicePort }}
+      {{- end }}
+      {{- else }}
         - path: /
           backend:
-            serviceName: {{ .Values.name }}
-            servicePort: {{ .Values.service.port }}
+            serviceName: {{ $serviceName }}
+            servicePort: {{ $servicePort }}
+      {{- end }}

@@ -34,3 +34,7 @@ ingress:
 #  value: "env-value-1"
 #- name: ENV_NAME_2
 #  value: "env-value-2"
+
+#paths:
+#- "/app/"
+#- "/health"
