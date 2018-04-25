@@ -29,6 +29,7 @@ service:
   port: 80
 
 ingress:
+  enabled: true
   annotations: {}
   class: nginx #this is value of controller.ingressClass from nginx-ingress chart deployed. It also requires
 
