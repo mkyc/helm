@@ -28,3 +28,9 @@ service:
 ingress:
   annotations: {}
   class: example
+
+#envs:
+#- name: ENV_NAME_1
+#  value: "env-value-1"
+#- name: ENV_NAME_2
+#  value: "env-value-2"
