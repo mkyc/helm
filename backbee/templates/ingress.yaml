@@ -16,10 +16,18 @@ metadata:
 spec:
   tls:
     - hosts:
+      {{- if .Values.namespace.enabled }}
+      - {{ .Values.name }}.{{ .Values.namespace.name }}.{{ .Values.domain }}
+      {{- else }}
       - {{ .Values.name }}.{{ .Values.domain }}
+      {{- end}}
       secretName: {{ .Values.name }}-tls
   rules:
+  {{- if .Values.namespace.enabled }}
+  - host: {{ .Values.name }}.{{ .Values.namespace.name }}.{{ .Values.domain }}
+  {{- else }}
   - host: {{ .Values.name }}.{{ .Values.domain }}
+  {{- end}}
     http:
       paths:
         - path: /
