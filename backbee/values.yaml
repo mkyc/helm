@@ -2,13 +2,16 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+
+#create separate namespace for all objects
 namespace:
   enabled: false
-  name: default
+  name: default #this will change url and app will be reachable under https://tester.default.example.com
 
+#number of pods
 replicaCount: 1
 
-name: tester
+name: tester #if no namespace used app will be reachable under https://tester.example.com
 domain: example.com
 
 
@@ -27,7 +30,7 @@ service:
 
 ingress:
   annotations: {}
-  class: example
+  class: nginx #this is value of controller.ingressClass from nginx-ingress chart deployed. It also requires
 
 #envs:
 #- name: ENV_NAME_1
