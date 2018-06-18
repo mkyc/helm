@@ -6,6 +6,7 @@
 #create separate namespace for all objects
 namespace:
   enabled: false
+  create: false
   name: default #this will change url and app will be reachable under https://tester.default.example.com
 
 #number of pods
