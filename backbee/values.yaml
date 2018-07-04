@@ -43,3 +43,8 @@ ingress:
 #paths:
 #- "/app/"
 #- "/health"
+
+#configVolumes: #already existing configmap named test-config with file test.txt inside
+#- name: test-config
+#  mountPath: /etc/test
+#  file: test.txt
