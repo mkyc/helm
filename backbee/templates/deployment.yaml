@@ -49,4 +49,3 @@ spec:
               path: {{ .file }}
       {{- end }}
       {{- end }}
-      restartPolicy: Never
