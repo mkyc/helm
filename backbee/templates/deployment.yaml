@@ -30,7 +30,8 @@ spec:
           volumeMounts:
           {{- range .Values.configVolumes }}
             - name: {{ .name }}
-              mountPath: {{ .mountPath }}
+              mountPath: {{ .mountPath }}/{{ .file }}
+              subPath: {{ .file }}
           {{- end }}
           {{- end }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.application }}:{{ .Values.image.tag }}"

@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   backbee:
   - apiVersion: v1
+    created: 2018-07-05T12:37:28.075813+02:00
+    description: Chart to deploy backend application secured up to https front using
+      cert-manager with ingres-shim
+    digest: 0c275042df8caffefcfc74c87cdacb241d6470bd3d0dba34e4736606e458b7a8
+    name: backbee
+    urls:
+    - https://github.com/mkyc/helm/raw/master/docs/backbee-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v1
     created: 2018-07-04T18:37:17.837957+02:00
     description: Chart to deploy backend application secured up to https front using
       cert-manager with ingres-shim
