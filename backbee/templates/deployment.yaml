@@ -26,12 +26,16 @@ spec:
               value: {{ .value | quote }}
           {{- end }}
           {{- end }}
-          {{- if .Values.configVolumes }}
+          {{- if .Values.configVolumes or .Values.pvcVolumes }}
           volumeMounts:
           {{- range .Values.configVolumes }}
             - name: {{ .name }}
               mountPath: {{ .mountPath }}/{{ .file }}
               subPath: {{ .file }}
+          {{- end }}
+          {{- range .Values.pvcVolumes }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
           {{- end }}
           {{- end }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.application }}:{{ .Values.image.tag }}"
@@ -39,7 +43,7 @@ spec:
           ports:
             - containerPort: {{ .Values.container.port }}
               protocol: TCP
-      {{- if .Values.configVolumes }}
+      {{- if .Values.configVolumes or .Values.pvcVolumes }}
       volumes:
       {{- range .Values.configVolumes }}
         - name: {{ .name }}
@@ -48,5 +52,10 @@ spec:
             items:
             - key: {{ .file }}
               path: {{ .file }}
+      {{- end }}
+      {{- range .Values.pvcVolumes }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ .claimName }}
       {{- end }}
       {{- end }}

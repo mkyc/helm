@@ -48,3 +48,8 @@ ingress:
 #- name: test-config
 #  mountPath: /etc/test
 #  file: test.txt
+
+#pvcVolumes:
+#- name: test-vol
+#  mountPath: /opt/test-disk
+#  claimName: test-disk
