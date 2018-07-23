@@ -26,7 +26,7 @@ spec:
               value: {{ .value | quote }}
           {{- end }}
           {{- end }}
-          {{- if .Values.configVolumes or .Values.pvcVolumes }}
+          {{- if (.Values.configVolumes) or (.Values.pvcVolumes) }}
           volumeMounts:
           {{- range .Values.configVolumes }}
             - name: {{ .name }}
@@ -43,7 +43,7 @@ spec:
           ports:
             - containerPort: {{ .Values.container.port }}
               protocol: TCP
-      {{- if .Values.configVolumes or .Values.pvcVolumes }}
+      {{- if (.Values.configVolumes) or (.Values.pvcVolumes) }}
       volumes:
       {{- range .Values.configVolumes }}
         - name: {{ .name }}
