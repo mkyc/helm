@@ -7,6 +7,9 @@ metadata:
 {{- end }}
   labels:
     app: {{ .Values.name }}
+    {{- range .Values.additionalLabels }}
+    {{ .key }}: {{ .value }}
+    {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -16,6 +19,9 @@ spec:
     metadata:
       labels:
         app: {{ .Values.name }}
+        {{- range .Values.additionalLabels }}
+        {{ .key }}: {{ .value }}
+        {{- end }}
     spec:
       containers:
         - name: {{ .Values.name }}

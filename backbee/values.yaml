@@ -49,7 +49,11 @@ ingress:
 #  mountPath: /etc/test
 #  file: test.txt
 
-#pvcVolumes:
+#pvcVolumes: #already existing PersistentVolumeClaim named test-disk
 #- name: test-vol
 #  mountPath: /opt/test-disk
 #  claimName: test-disk
+
+#additionalLabels: #additional labels to be added to deployment, pod, service and ingress
+#- key: key1
+#  value: value1
