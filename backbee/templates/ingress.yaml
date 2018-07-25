@@ -1,4 +1,5 @@
 {{- if .Values.ingress.enabled -}}
+{{- if .Values.service }}
 {{- $serviceName := .Values.name -}}
 {{- $servicePort := .Values.service.port -}}
 apiVersion: extensions/v1beta1
@@ -55,4 +56,5 @@ spec:
           serviceName: {{ $serviceName }}
           servicePort: {{ $servicePort }}
       {{- end }}
+{{- end }}
 {{- end }}

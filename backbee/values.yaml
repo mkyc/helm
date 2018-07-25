@@ -22,9 +22,9 @@ image:
   tag: 1.8
   pullPolicy: IfNotPresent
 
-container:
-  ports:
-  - containerPort: 8080
+#container:
+#  ports:
+#  - containerPort: 8080
 #  - containerPort: 80
 #    protocol: TCP
 #  port: 8080 #deprecated
@@ -37,11 +37,11 @@ container:
 #    mountPath: /opt/test-disk
 #    claimName: test-disk
 
-service:
-  type: NodePort
-  ports:
-  - port: 80
-    targetPort: 8080
+#service:
+#  type: NodePort
+#  ports:
+#  - port: 80
+#    targetPort: 8080
 #  - port: 82
 #    targetPort: 81
 #    protocol: TCP
