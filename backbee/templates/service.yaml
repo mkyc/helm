@@ -18,11 +18,13 @@ spec:
   - port: {{ .Values.service.port }}
     targetPort: {{ .Values.container.port }}
     protocol: TCP
+    name: port-{{ .Values.service.port }}-{{ .Values.container.port }}-tcp
   {{- end }}
   {{- range .Values.service.ports }}
   - port: {{ .port }}
     targetPort: {{ .targetPort }}
     protocol: {{ .protocol | default "TCP" }}
+    name: port-{{ .port }}-{{ .targetPort }}-{{ .protocol | default "TCP" | lower }}
   {{- end }}
   {{- end }}
   selector:
