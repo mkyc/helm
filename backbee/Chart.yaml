@@ -1,4 +1,4 @@
 apiVersion: v1
 description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
 name: backbee
-version: 0.1.12
+version: 0.2.0

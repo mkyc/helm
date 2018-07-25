@@ -12,9 +12,18 @@ metadata:
     {{- end }}
 spec:
   type: {{ .Values.service.type }}
+  {{- if or ( and .Values.container.port .Values.service.port) .Values.service.ports }}
   ports:
+  {{- if and .Values.container.port .Values.service.port }}
   - port: {{ .Values.service.port }}
     targetPort: {{ .Values.container.port }}
     protocol: TCP
+  {{- end }}
+  {{- range .Values.service.ports }}
+  - port: {{ .port }}
+    targetPort: {{ .targetPort }}
+    protocol: {{ .protocol | default "TCP" }}
+  {{- end }}
+  {{- end }}
   selector:
     app: {{ .Values.name }}

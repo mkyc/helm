@@ -24,44 +24,74 @@ spec:
         {{- end }}
     spec:
       containers:
-        - name: {{ .Values.name }}
-          {{- if .Values.envs }}
-          env:
-          {{- range .Values.envs }}
-            - name: {{ .name }}
-              value: {{ .value | quote }}
-          {{- end }}
-          {{- end }}
-          {{- if (.Values.configVolumes) or (.Values.pvcVolumes) }}
-          volumeMounts:
-          {{- range .Values.configVolumes }}
-            - name: {{ .name }}
-              mountPath: {{ .mountPath }}/{{ .file }}
-              subPath: {{ .file }}
-          {{- end }}
-          {{- range .Values.pvcVolumes }}
-            - name: {{ .name }}
-              mountPath: {{ .mountPath }}
-          {{- end }}
-          {{- end }}
-          image: "{{ .Values.image.repository }}/{{ .Values.image.application }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: {{ .Values.container.port }}
-              protocol: TCP
-      {{- if (.Values.configVolumes) or (.Values.pvcVolumes) }}
+      - name: {{ .Values.name }}
+        {{- if .Values.envs }}
+        env:
+        {{- range .Values.envs }}
+        - name: {{ .name }}
+          value: {{ .value | quote }}
+        {{- end }}
+        {{- end }}
+        {{- if or .Values.configVolumes .Values.pvcVolumes .Values.container.configVolumes .Values.container.pvcVolumes }}
+        volumeMounts:
+        {{- range .Values.configVolumes }}
+        - name: {{ .name }}
+          mountPath: {{ .mountPath }}/{{ .file }}
+          subPath: {{ .file }}
+        {{- end }}
+        {{- range .Values.container.configVolumes }}
+        - name: {{ .name }}
+          mountPath: {{ .mountPath }}/{{ .file }}
+          subPath: {{ .file }}
+        {{- end }}
+        {{- range .Values.pvcVolumes }}
+        - name: {{ .name }}
+          mountPath: {{ .mountPath }}
+        {{- end }}
+        {{- range .Values.container.pvcVolumes }}
+        - name: {{ .name }}
+          mountPath: {{ .mountPath }}
+        {{- end }}
+        {{- end }}
+        image: "{{ .Values.image.repository }}/{{ .Values.image.application }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{- if or .Values.container.port .Values.container.ports }}
+        ports:
+        {{- if .Values.container.port }}
+        - containerPort: {{ .Values.container.port }}
+          protocol: TCP
+        {{- end }}
+        {{- range .Values.container.ports }}
+        - containerPort: {{ .containerPort }}
+          protocol: {{ .protocol | default "TCP" }}
+        {{- end }}
+        {{- end }}
+      {{- if or .Values.configVolumes .Values.pvcVolumes .Values.container.configVolumes .Values.container.pvcVolumes }}
       volumes:
       {{- range .Values.configVolumes }}
-        - name: {{ .name }}
-          configMap:
-            name: {{ .name }}
-            items:
-            - key: {{ .file }}
-              path: {{ .file }}
+      - name: {{ .name }}
+        configMap:
+          name: {{ .name }}
+          items:
+          - key: {{ .file }}
+            path: {{ .file }}
+      {{- end }}
+      {{- range .Values.container.configVolumes }}
+      - name: {{ .name }}
+        configMap:
+          name: {{ .name }}
+          items:
+          - key: {{ .file }}
+            path: {{ .file }}
       {{- end }}
       {{- range .Values.pvcVolumes }}
-        - name: {{ .name }}
-          persistentVolumeClaim:
-            claimName: {{ .claimName }}
+      - name: {{ .name }}
+        persistentVolumeClaim:
+          claimName: {{ .claimName }}
+      {{- end }}
+      {{- range .Values.container.pvcVolumes }}
+      - name: {{ .name }}
+        persistentVolumeClaim:
+          claimName: {{ .claimName }}
       {{- end }}
       {{- end }}

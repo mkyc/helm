@@ -23,16 +23,39 @@ image:
   pullPolicy: IfNotPresent
 
 container:
-  port: 8080
+  ports:
+  - containerPort: 8080
+#  - containerPort: 80
+#    protocol: TCP
+#  port: 8080 #deprecated
+#  configVolumes: #already existing configmap named test-config with file test.txt inside
+#  - name: test-config
+#    mountPath: /etc/test
+#    file: test.txt
+#  pvcVolumes: #already existing PersistentVolumeClaim named test-disk
+#  - name: test-vol
+#    mountPath: /opt/test-disk
+#    claimName: test-disk
 
 service:
   type: NodePort
-  port: 80
+  ports:
+  - port: 80
+    targetPort: 8080
+#  - port: 82
+#    targetPort: 81
+#    protocol: TCP
+#  port: 80 #deprecated
+
 
 ingress:
   enabled: true
   annotations: {}
   class: nginx #this is value of controller.ingressClass from nginx-ingress chart deployed. It also requires
+  paths:
+  - path: "/"
+    servicePort: 80
+#  - path: "/test1/"
 
 #envs:
 #- name: ENV_NAME_1
@@ -40,19 +63,19 @@ ingress:
 #- name: ENV_NAME_2
 #  value: "env-value-2"
 
-#paths:
+#paths: #deprecated
 #- "/app/"
 #- "/health"
 
-#configVolumes: #already existing configmap named test-config with file test.txt inside
-#- name: test-config
-#  mountPath: /etc/test
-#  file: test.txt
-
-#pvcVolumes: #already existing PersistentVolumeClaim named test-disk
-#- name: test-vol
-#  mountPath: /opt/test-disk
-#  claimName: test-disk
+#configVolumes: #deprecated
+#- name: test2-config
+#  mountPath: /etc/test2
+#  file: test2.txt
+#
+#pvcVolumes: #deprecated
+#- name: test2-vol
+#  mountPath: /opt/test2-disk
+#  claimName: test2-disk
 
 #additionalLabels: #additional labels to be added to deployment, pod, service and ingress
 #- key: key1

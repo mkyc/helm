@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   backbee:
   - apiVersion: v1
+    created: 2018-07-25T16:54:45.473911+02:00
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
+    digest: 984a2b000838d8eedcff50e8ac11f467680a425f24a0662e7077e1e72aa1f51c
+    name: backbee
+    urls:
+    - https://github.com/mkyc/helm/raw/master/docs/backbee-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v1
     created: 2018-07-24T13:36:11.944457+02:00
     description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: c0bc3fddd6d279d8ce0dd5cfea27b022f15047d95b6d0b5e7d5b026f2b8e87cd
@@ -27,8 +35,7 @@ entries:
     version: 0.1.10
   - apiVersion: v1
     created: 2018-07-05T12:37:28.075813+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: 0c275042df8caffefcfc74c87cdacb241d6470bd3d0dba34e4736606e458b7a8
     name: backbee
     urls:
@@ -36,8 +43,7 @@ entries:
     version: 0.1.9
   - apiVersion: v1
     created: 2018-07-04T18:37:17.837957+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: e140b9601d80467c128eab925ec5bafd6c30896af2c137e58b235b482d25464c
     name: backbee
     urls:
@@ -45,8 +51,7 @@ entries:
     version: 0.1.8
   - apiVersion: v1
     created: 2018-07-04T16:44:11.442339+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: 0409b3058751c5cf2b9fa2851831a7ad5ad5bbac26a1f78c12ca9ae6a6776081
     name: backbee
     urls:
@@ -54,8 +59,7 @@ entries:
     version: 0.1.7
   - apiVersion: v1
     created: 2018-06-18T14:45:12.737112+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: 81c5ec671d2bf845489452799fa7f25e9ad3157a238dc200c6a40849c0be09c2
     name: backbee
     urls:
@@ -63,8 +67,7 @@ entries:
     version: 0.1.6
   - apiVersion: v1
     created: 2018-06-18T14:45:12.736311+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: 355cda9b07932dc386d21259a84efd45843650735a88fd18c3b1db3ec09e342d
     name: backbee
     urls:
@@ -72,8 +75,7 @@ entries:
     version: 0.1.5
   - apiVersion: v1
     created: 2018-06-18T14:45:12.735512+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: d9f38e686f1f0c43348c2cf55b68b959f955f2040e0f2f2c977db64dfeac1d5e
     name: backbee
     urls:
@@ -81,8 +83,7 @@ entries:
     version: 0.1.4
   - apiVersion: v1
     created: 2018-06-18T14:45:12.734447+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: 6660e57d63e6b7993299627da2220ce6008381e9e11f2a05db4ae4d56601d621
     name: backbee
     urls:
@@ -90,8 +91,7 @@ entries:
     version: 0.1.3
   - apiVersion: v1
     created: 2018-06-18T14:45:12.733798+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: ce61571eed1af851cc98cbb1dd7968d5ce80433d91d0c66646c9e7763b89f549
     name: backbee
     urls:
@@ -99,8 +99,7 @@ entries:
     version: 0.1.2
   - apiVersion: v1
     created: 2018-06-18T14:45:12.732971+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: ef0261fad8dca54ee1f45dfebcdfcd6ad4d62aee6493ba0c63f5615833d8eeae
     name: backbee
     urls:
@@ -108,8 +107,7 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     created: 2018-06-18T14:45:12.732248+02:00
-    description: Chart to deploy backend application secured up to https front using
-      cert-manager with ingres-shim
+    description: Chart to deploy backend application secured up to https front using cert-manager with ingres-shim
     digest: bfd2a7cbb63b9974b7a9183864716ac40a9a1ba7268eade7a3682d391622a241
     name: backbee
     urls:

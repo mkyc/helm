@@ -36,17 +36,23 @@ spec:
   {{- end}}
     http:
       paths:
-      {{- if .Values.paths }}
+      {{- if or .Values.ingress.paths .Values.paths }}
+      {{- range .Values.ingress.paths }}
+      - path: {{ .path }}
+        backend:
+          serviceName: {{ $serviceName }}
+          servicePort: {{ .servicePort | default $servicePort }}
+      {{- end }}
       {{- range .Values.paths }}
-        - path: {{ . }}
-          backend:
-            serviceName: {{ $serviceName }}
-            servicePort: {{ $servicePort }}
+      - path: {{ . }}
+        backend:
+          serviceName: {{ $serviceName }}
+          servicePort: {{ $servicePort }}
       {{- end }}
       {{- else }}
-        - path: /
-          backend:
-            serviceName: {{ $serviceName }}
-            servicePort: {{ $servicePort }}
+      - path: /
+        backend:
+          serviceName: {{ $serviceName }}
+          servicePort: {{ $servicePort }}
       {{- end }}
 {{- end }}
